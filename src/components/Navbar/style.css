@@ -1,0 +1,49 @@
+a {
+    color: #fff;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.nav-bar-logo {
+    margin: 0;
+    padding: 50px;
+    background-color: aqua;
+}
+
+form {
+    display: flex;
+    justify-content: end;
+    height: min-content;
+    width: fit-content;
+}
+
+.MuiOutlinedInput-root {
+    color: #fff !important;
+}
+
+button {
+    width: 50px;
+    height: auto;
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.nav-bar-extra {
+    display: flex;
+    align-items: center;
+    justify-items: end;
+    padding: 0.5rem;
+}
+
+.nav-bar-list {
+    display: flex;
+    align-items: center;
+    width: fit-content;
+    gap: 26px;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+}
+
+#ancora {
+    display: none;
+}

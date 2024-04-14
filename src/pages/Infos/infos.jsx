@@ -1,19 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-import ReplyIcon from '@mui/icons-material/Reply';
+
 import { Button } from "@mui/material";
+
+import ReplyIcon from '@mui/icons-material/Reply';
+
 import CardTrailer from "../../components/CardTrailer/CardTrailer.jsx";
+
+import img1 from "../../assets/noimage.png"
+
+import './style.css'
 
 const apiKey = import.meta.env.VITE_API_KEY;
 const filmsDetails = import.meta.env.VITE_DET;
 const filmsIMG = import.meta.env.VITE_IMG;
 const filmsSLIDE = import.meta.env.VITE_SLIDE;
 
-import './style.css'
-
-import img1 from "../../assets/noimage.png"
-
-
+// função para coletar os detalhes dos filmes
 function Infos() {
     const { id } = useParams();
     const [filme, setFilme] = useState(null);
@@ -36,7 +39,8 @@ function Infos() {
     }, [id]);
 
     if (!filme) {
-        return <div>Carregando...</div>;
+        return 
+        <div>Carregando...</div>;
     }
 
     return (

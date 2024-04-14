@@ -1,16 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import ListFilmes from "../../components/ListFilms/ListFilmes";
+
+import Alert from '@mui/material/Alert';
 import TextField from '@mui/material/TextField';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import { Button, List, ListItem, ListItemText, Drawer, IconButton } from '@mui/material';
-import TravelExploreIcon from '@mui/icons-material/TravelExplore';
+
 import MenuIcon from '@mui/icons-material/Menu';
-import Alert from '@mui/material/Alert';
-import './style.css';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import LanguageIcon from '@mui/icons-material/Language';
+import InstagramIcon from '@mui/icons-material/Instagram';
+import TravelExploreIcon from '@mui/icons-material/TravelExplore';
 
 import img1 from "../../assets/logo.png"
 import img2 from "../../assets/noimage.png"
+
+import './style.css';
 
 const apiKey = import.meta.env.VITE_API_KEY;
 const filmsURL = import.meta.env.VITE_API_FILMS;
@@ -25,10 +31,12 @@ const Screen = () => {
     const [filmSearch, setfilmSearch] = useState("");
     const [categorias, setCategorias] = useState([]);
     const [highlightedFilm, setHighlightedFilm] = useState(null);
-    const [arr, setArr] = useState([]);
+    const [arrayCateg, setArrayCateg] = useState([]);
     const [showAlert, setShowAlert] = useState(false);
     const [drawerOpen, setDrawerOpen] = useState(false);
+    const [selectedCategory, setSelectedCategory] = useState("FILMES + POPULARES");
 
+    // Função useEffect para buscar e armazenar as categorias de filmes
     useEffect(() => {
         const fetchCategorias = async () => {
             try {
@@ -39,7 +47,7 @@ const Screen = () => {
                 const data = await response.json();
                 setCategorias(data.genres);
                 const categoryNames = data.genres.map(genre => genre.name);
-                setArr(categoryNames);
+                setArrayCateg(categoryNames);
             } catch (error) {
                 console.error('Erro:', error);
             }
@@ -47,6 +55,7 @@ const Screen = () => {
         fetchCategorias();
     }, []);
 
+    // Função useEffect para buscar e armazenar os dados dos filmes 
     useEffect(() => {
         fetch(filmURL)
             .then(res => {
@@ -63,20 +72,23 @@ const Screen = () => {
             });
     }, [filmURL]);
 
+    // Função para buscar os filmes de um gênero
     const getData = (filmGenre) => {
         const genre = categorias.find(cat => cat.name === filmGenre);
         if (genre) {
             const genreId = genre.id;
             const genreURL = `https://api.themoviedb.org/3/discover/movie?${apiKey}&with_genres=${genreId}&language=pt-BR`;
             setfilmURL(genreURL);
+            setSelectedCategory("GÊNERO: " + filmGenre); // Atualiza o estado com o nome da categoria selecionada
         }
     };
 
+    // Função para atualizar slider
     const handleMouseOver = (film) => {
         setHighlightedFilm(film);
     };
 
-
+    // Função para buscar filmes com base no termo de pesquisa e atualizar os dados de filmes exibidos
     const searchFilm = async (event) => {
         event.preventDefault();
         if (!filmSearch.trim()) {
@@ -97,6 +109,7 @@ const Screen = () => {
         }
     }
 
+    // Função para controlar a abertura e fechamento do menu de categorias
     const toggleDrawer = (open) => (event) => {
         if (event && event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
             return;
@@ -107,24 +120,25 @@ const Screen = () => {
     return (
         <>
             <div className="header">
-                <div className='nav-bar-logo'>
+                <div className='header-logo'>
                     <img src={img1} alt="" />
                     <ButtonGroup
                         disableElevation
                         variant="contained"
                         aria-label="Disabled button group">
                         <Button>REGISTRAR</Button>
-                        <Button>LOGIN</Button>
+                        <Button>ENTRAR</Button>
                     </ButtonGroup>
                 </div>
+                {/* MENU E SEARCH */}
                 <div className="header-click">
                     <IconButton className="header-categ" onClick={toggleDrawer(true)}>
                         <MenuIcon />
                     </IconButton>
                     <Drawer anchor="left" open={drawerOpen} onClose={toggleDrawer(false)}>
-                        <h3 className="header-categ-gen">GENEROS</h3>
+                        <h3 className="header-categ-gen">GÊNEROS</h3>
                         <List sx={{ marginTop: '60px' }}>
-                            {arr.map((value, index) => (
+                            {arrayCateg.map((value, index) => (
                                 <ListItem button key={index} onClick={() => getData(value)}>
                                     <ListItemText sx={{ textAlign: 'center' }} primary={value} />
                                 </ListItem>
@@ -152,24 +166,69 @@ const Screen = () => {
                     <div className="screen-alert">
                         <span className="screen-alert-back"></span>
                         <Alert severity="warning" onClose={() => { setShowAlert(false) }}>
-                            This Alert displays the default close icon.
+                            VOCÊ PRECISA PREENCHER O CAMPO PARA PESQUISAR
                         </Alert>
                     </div>
                 )}
             </div>
+            {/* IMG BIG */}
             <div className="header-slider">
                 {highlightedFilm && (
-                    <img src={highlightedFilm.backdrop_path ? `${filmsSLIDE}${highlightedFilm.backdrop_path}` : img2} alt="" />
+                    <div className="header-slider-poster">
+                        <h1 className="header-slider-title">{highlightedFilm.title}</h1>
+                        <img src={highlightedFilm.backdrop_path ? `${filmsSLIDE}${highlightedFilm.backdrop_path}` : img2} alt="" />
+                    </div>
                 )}
             </div>
+            {/* FILMES */}
             <div className="content">
-                {filmData.map((film, index) => (
-                    <div key={index} onMouseOver={() => handleMouseOver(film)}>
-                        <Link to={`/infos/${film.id}`}>
-                            <ListFilmes info={film} key={index} />
-                        </Link>
+                <div className="content-categ">
+                    <h1>{selectedCategory}</h1>
+                </div>
+                <div className="content-films">
+                    {filmData.map((film, index) => (
+                        <div key={index} onMouseOver={() => handleMouseOver(film)}>
+                            <Link to={`/infos/${film.id}`}>
+                                <ListFilmes info={film} key={index} />
+                            </Link>
+                        </div>
+                    ))}
+                </div>
+                {/* FOOTER */}
+                <div className="footer">
+                    <div className="footer-logo">
+                        <img src={img1} alt="Logo Site" />
                     </div>
-                ))}
+                    <div className="footer-btn">
+                        <ul>
+                            <li>Termos e Condições de Uso</li>
+                            <li>Política de privacidade</li>
+                            <li>Proteção de Dados no Brasil</li>
+                            <li>Anúncios personalizados</li>
+                            <li>Dispositivos compatíveis</li>
+                        </ul>
+                    </div>
+                    <div className="footer-copy">
+                        <p>&#169; Crypticalcoder, Kleydson Beckman. All right reserved 2024.</p>
+                        <br />
+                        <p>FilmesTop.com é um serviço pago, baseado em assinatura e sujeito a termos e condições. O serviço FilmesTop.com é comercializado por FilmesTop Company (Brasil) Ltda.</p>
+                    </div>
+                    <div className="footer-links">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <a href="https://www.instagram.com/ubeckeer/" target="_blank" class="footer-social">
+                                    <InstagramIcon />
+                                </a>
+                                <a href="https://bit.ly/3W9B9Kh" target="_blank" >
+                                    <LinkedInIcon />
+                                </a>
+                                <a href="https://kleydsonbeckmansite.netlify.app" target="_blank">
+                                    <LanguageIcon />
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </>
     );

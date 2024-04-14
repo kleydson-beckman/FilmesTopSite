@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-const apiKey = import.meta.env.VITE_API_KEY;
-
 import './style.css';
+
+const apiKey = import.meta.env.VITE_API_KEY;
 
 function CardTrailer() {
     const { id } = useParams();
@@ -19,23 +19,16 @@ function CardTrailer() {
                 }
                 const data = await response.json();
     
-                // Verifica se há resultados
                 if (data.results && data.results.length > 0) {
-                    // Filtra os vídeos que têm "trailer" no título
                     const filteredVideos = data.results.filter(video => video.name.toLowerCase().includes('trailer'));
-                    
-                    // Salva apenas o primeiro vídeo filtrado no estado
                     if (filteredVideos.length > 0) {
                         setVideos([filteredVideos[0]]);
                     } else {
-                        // Se não houver trailers, salva todos os vídeos
                         setVideos(data.results);
                     }
                 } else {
-                    // Se não houver vídeos, define o estado como vazio
                     setVideos([]);
                 }
-    
             } catch (error) {
                 console.error('Erro:', error);
             }
@@ -44,9 +37,8 @@ function CardTrailer() {
         fetchVideos();
     }, [id]);
     
-
     if (!videos || videos.length === 0) {
-        return <div>Nenhum trailer disponível.</div>;
+        return <div>Nenhum trailer disponível para o filme.</div>;
     }
 
     return (

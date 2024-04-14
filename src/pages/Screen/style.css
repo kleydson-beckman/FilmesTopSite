@@ -1,3 +1,5 @@
+/* ESTILOS DO HEADER 1º BARRA */
+
 .header {
     justify-content: space-around;
     align-items: center;
@@ -6,8 +8,23 @@
     z-index: 10;
 }
 
+.header-logo {
+    display: flex;
+    margin: 0;
+    padding: 30px;
+    background-color: var(--quaternary-color);
+    justify-content: space-between;
+    align-items: center;
+    z-index: 10;
+}
+
+.header-logo img {
+    width: 15%;
+    margin: 0;
+}
+
 .header-click {
-    background-color: #090c15;
+    background-color: var(--quinary-color);
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -16,6 +33,33 @@
     align-content: center;
     padding: 10px 10px 8px 10px;
     z-index: 10;
+}
+
+.header-categ {
+    color: var(--secondary-color);
+}
+
+.header-categ-gen {
+    width: 100%;
+    height: max-content;
+    padding: 15px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.39);
+    position: fixed !important;
+    color: var(--secondary-color);
+    z-index: 2;
+}
+
+.header .MuiIconButton-root {
+    color: var(--secondary-color);
+    width: max-content;
+    margin-left: 1rem;
+}
+
+.header .MuiIconButton-root .MuiSvgIcon-root {
+    color: var(--secondary-color);
+    width: 3rem;
+    height: 3rem;
 }
 
 .MuiDrawer-paper {
@@ -27,75 +71,25 @@
 }
 
 .MuiListItem-root {
-    color: #fff !important;
+    color: var(--secondary-color) !important;
 }
 
 .MuiListItem-root:hover {
-    background-color: #ed6c02!important;
+    background-color: var(--primary-color) !important;
 }
 
-.header-categ {
-    color: #fff;
+.MuiTypography-root {
+    font-family: "Space Grotesk", sans-serif !important;
 }
 
-.header-categ-gen {
-    width: 100%;
-    height: max-content;
-    padding: 15px;
-    text-align: center;
-    background-color: black;
-    position: absolute !important;
-    color: #fff;
-    z-index: 2;
-}
-
-.header .MuiIconButton-root {
-    color: #fff;
-    width: max-content;
-    margin-left: 1rem;
-    ;
-}
-
-.header .MuiIconButton-root .MuiSvgIcon-root {
-    color: #fff;
-    width: 3rem;
-    height: 3rem;
-}
-
-button {
-    transition: all 0.3s;
-}
-
-button:hover {
-    transform: scale(1.2);
-}
+/* ESTILOS HEADER 2º BARRA */
 
 .MuiOutlinedInput-input {
     height: 0.5em !important;
 }
 
-
-:overflow-scrolling {
-    color: #ed6c02;
-}
-
-.nav-bar-logo {
-    display: flex;
-    margin: 0;
-    padding: 30px;
-    background-color: #0d111d;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 10;
-}
-
-.nav-bar-logo img {
-    width: 12%;
-    margin: 0;
-}
-
 .MuiOutlinedInput-root {
-    color: #fff !important;
+    color: var(--secondary-color) !important;
 }
 
 .conj-search {
@@ -111,6 +105,8 @@ button:hover {
     border-bottom-right-radius: 15px;
 }
 
+/* ESTILOS DO MODAL ALERTA */
+
 .screen-alert {
     width: 100vw;
     height: 100%;
@@ -124,7 +120,7 @@ button:hover {
 }
 
 .screen-alert-back {
-    background-color:#090c15;
+    background-color: var(--quinary-color);
     opacity: 92%;
     width: 100vw;
     height: 100%;
@@ -135,28 +131,55 @@ button:hover {
 
 .screen-alert .MuiAlert-root {
     width: 500px;
-    height: 200px;
+    height: 250px;
+    background-color: var(--secondary-color);
+    align-items: center;
     z-index: 2;
+    
 }
 
 .screen-alert .MuiAlert-message {
     padding: 80px 0;
     min-width: 0;
     overflow: auto;
+    color: var(--primary-color) !important;
     text-align: center;
     font-size: 1.2rem;
     overflow-y: hidden;
 }
 
 .screen-alert .MuiAlert-icon {
-    color: #ed6c02;
+    color: var(--primary-color) !important;
     padding: 80px 0;
 }
+
+.screen-alert .MuiAlert-action {
+    margin-right: -8px;
+    height: inherit;
+}
+
 
 .screen-alert .MuiSvgIcon-root {
     width: 10vh;
     height: 2em !important;
 }
+
+.screen-alert .MuiIconButton-root .MuiSvgIcon-root{
+    color: var(--primary-color);
+}
+
+
+/* ESTILOS BUTTONS */
+
+button {
+    transition: all 0.3s;
+}
+
+button:hover {
+    transform: scale(1.2);
+}
+
+/* ESTILOS HEADER SLIDER */
 
 .header-slider {
     display: flex;
@@ -168,6 +191,19 @@ button:hover {
     top: 20vh;
 }
 
+.header-slider-title {
+    position: absolute;
+    width: 550px;
+    top: 0;
+    left: 0;
+    padding: 80px 0px 0px 70px;
+    color: var(--secondary-color);
+    text-align: left;
+    font-size: 3.5rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    z-index: 10;
+}
+
 .header-slider img {
     width: 100%;
     height: auto;
@@ -175,6 +211,8 @@ button:hover {
     -webkit-mask-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 1)), to(rgba(0, 0, 0, 0)));
     mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 0) 60%);
 }
+
+/* ESTILOS CONTENT FILMES */
 
 .content {
     margin: auto;
@@ -184,4 +222,98 @@ button:hover {
     flex-wrap: wrap;
     padding-top: 70vh;
     z-index: 1;
+}
+
+.content-categ {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+    height: 110px;
+    color: rgba(255,255,255,0.2);
+    font-size: 1.2rem;
+    padding: 0px 80px 0px 0px;
+    text-transform: uppercase;
+    
+}
+
+.content-films {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+
+
+/* ESTILOS FOOTER */
+
+.footer {
+    width: 100%;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    border-top: 10px solid var(--quinary-color);
+    background-color: var(--quaternary-color);
+    align-items: center;
+    margin-top: 10vh;
+    z-index: 4;
+}
+
+.footer-logo img {
+    width: 180px;
+    margin-bottom: 0;
+    padding-bottom: 10px;
+}
+
+.footer .footer-copy {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-bottom: 10px;
+}
+
+.footer .footer-copy p {
+    font-size: 12px;
+    color: silver;
+    margin-bottom: 20px;
+    text-align: center;
+    margin-bottom: 0;
+}
+
+.footer-links {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+
+.footer-links .row {
+    margin-bottom: 0;
+    padding: 30px 0px 0px;
+    justify-content: space-evenly;
+}
+
+.footer-links .row a {
+    margin-left: 10px;
+}
+
+.footer ul {
+    list-style: none;
+    display: inline-flex;
+    column-gap: 2rem;
+    padding: 2rem;
+    align-items: center;
+    font-size: 12px;
+}
+
+.footer li {
+    transition: all 0.3s;
+    color: silver;
+    padding-bottom: 10px;
+}
+
+.footer li:hover {
+    cursor: pointer;
+    transform: scale(1.1);
 }

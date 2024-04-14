@@ -1,3 +1,9 @@
+/* ESTILOS DO CARD TRAILER */
+
+.card-trailer-box {
+    z-index: 10;
+}
+
 .card-trailer {
     padding: 25px;
     border: 2px solid #ffffff27;
@@ -10,6 +16,3 @@
     margin: 20px;
 }
 
-.card-trailer-box {
-    z-index: 10;
-}

@@ -4,7 +4,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 
 import App from './App'
 import Screen from './pages/Screen/Screen'
-import Infos from './pages/Informacoes/infos'
+import Infos from './pages/Infos/infos'
 
 import './global.css'
 

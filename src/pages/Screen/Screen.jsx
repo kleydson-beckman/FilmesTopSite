@@ -23,7 +23,7 @@ const filmsURL = import.meta.env.VITE_API_FILMS;
 const filmsSearch = import.meta.env.VITE_SEARCH;
 const filmsSLIDE = import.meta.env.VITE_SLIDE;
 
-let url = filmsURL + "?" + apiKey + "&language=pt-BR";
+let url = filmsURL + "?" + "api_key=64de36c360b3b3769a76bff3285f3e93" + "&language=pt-BR";
 
 const Screen = () => {
     
@@ -41,7 +41,7 @@ const Screen = () => {
     useEffect(() => {
         const fetchCategorias = async () => {
             try {
-                const response = await fetch(`https://api.themoviedb.org/3/genre/movie/list?${apiKey}&language=pt-BR`);
+                const response = await fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=64de36c360b3b3769a76bff3285f3e93&language=pt-BR`);
                 if (!response.ok) {
                     throw new Error('Erro ao buscar categorias de filmes');
                 }
@@ -78,7 +78,7 @@ const Screen = () => {
         const genre = categorias.find(cat => cat.name === filmGenre);
         if (genre) {
             const genreId = genre.id;
-            const genreURL = `https://api.themoviedb.org/3/discover/movie?${apiKey}&with_genres=${genreId}&language=pt-BR`;
+            const genreURL = `https://api.themoviedb.org/3/discover/movie?api_key=64de36c360b3b3769a76bff3285f3e93&with_genres=${genreId}&language=pt-BR`;
             setfilmURL(genreURL);
             setSelectedCategory("GÊNERO: " + filmGenre); // Atualiza o estado com o nome da categoria selecionada
         }
@@ -97,7 +97,7 @@ const Screen = () => {
             return;
         }
         try {
-            const newFilmURL = `${filmsSearch}?${apiKey}&query=${filmSearch}&language=pt-BR`;
+            const newFilmURL = `${filmsSearch}?api_key=64de36c360b3b3769a76bff3285f3e93&query=${filmSearch}&language=pt-BR`;
             const response = await fetch(newFilmURL);
             if (!response.ok) {
                 throw new Error('Erro ao buscar filmes');

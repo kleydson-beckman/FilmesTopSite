@@ -24,7 +24,7 @@ function Infos() {
     useEffect(() => {
         const fetchFilme = async () => {
             try {
-                const response = await fetch(`${filmsDetails}/${id}?${apiKey}&language=pt-BR`);
+                const response = await fetch(`${filmsDetails}/${id}?api_key=64de36c360b3b3769a76bff3285f3e93&language=pt-BR`);
                 if (!response.ok) {
                     throw new Error('Erro ao buscar detalhes do filme');
                 }

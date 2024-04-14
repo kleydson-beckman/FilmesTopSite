@@ -12,7 +12,7 @@ function CardTrailer() {
     useEffect(() => {
         const fetchVideos = async () => {
             try {
-                const response = await fetch(`https://api.themoviedb.org/3/movie/${id}/videos?${apiKey}`);
+                const response = await fetch(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=64de36c360b3b3769a76bff3285f3e93`);
                 
                 if (!response.ok) {
                     throw new Error('Erro ao buscar vídeos do filme');

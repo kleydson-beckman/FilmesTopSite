@@ -135,7 +135,7 @@
     background-color: var(--secondary-color);
     align-items: center;
     z-index: 2;
-    
+
 }
 
 .screen-alert .MuiAlert-message {
@@ -164,7 +164,7 @@
     height: 2em !important;
 }
 
-.screen-alert .MuiIconButton-root .MuiSvgIcon-root{
+.screen-alert .MuiIconButton-root .MuiSvgIcon-root {
     color: var(--primary-color);
 }
 
@@ -229,11 +229,10 @@ button:hover {
     justify-content: flex-end;
     width: 100%;
     height: 110px;
-    color: rgba(255,255,255,0.2);
+    color: rgba(255, 255, 255, 0.2);
     font-size: 1.2rem;
     padding: 0px 80px 0px 0px;
     text-transform: uppercase;
-    
 }
 
 .content-films {
@@ -316,4 +315,48 @@ button:hover {
 .footer li:hover {
     cursor: pointer;
     transform: scale(1.1);
+}
+
+/* RESPONSIVIDADE */
+
+@media screen and (max-width: 100vh) {
+    .content-categ {
+        justify-content: center;
+        margin-bottom: 80px;
+        padding: 0;
+    }
+    .header-slider-title {
+        padding: 0;
+        font-size: revert;
+        text-align: center;
+        padding: 10px;
+        width: 100%;
+    }
+    .header-logo img {
+        width: 30%;
+    }
+    .header-slider img {
+        width: 900px;
+    }
+    .content {
+        padding-top: 60vh;
+        z-index: 20;
+    }
+
+    .footer {
+        height: auto;
+    }
+    .footer ul {
+        display: flex;
+        flex-direction: column;
+    }
+    .footer-copy {
+        padding: 15px;
+    }
+    .footer-logo img {
+        padding-top: 20px;
+    }
+    .footer-links {
+        padding-bottom: 20px;
+    }
 }

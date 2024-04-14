@@ -31,7 +31,7 @@ const Screen = () => {
     const [filmURL, setfilmURL] = useState(url);
     const [filmSearch, setfilmSearch] = useState("");
     const [categorias, setCategorias] = useState([]);
-    const [highlightedFilm, setHighlightedFilm] = useState(null);
+    const [highlightedFilm, setHighlightedFilm] = useState(filmData[0]);
     const [arrayCateg, setArrayCateg] = useState([]);
     const [showAlert, setShowAlert] = useState(false);
     const [drawerOpen, setDrawerOpen] = useState(false);
@@ -67,6 +67,7 @@ const Screen = () => {
             })
             .then(data => {
                 setfilmData(data.results);
+                setHighlightedFilm(data.results[0]);
             })
             .catch(error => {
                 console.error('Erro:', error);
@@ -80,7 +81,7 @@ const Screen = () => {
             const genreId = genre.id;
             const genreURL = `https://api.themoviedb.org/3/discover/movie?api_key=64de36c360b3b3769a76bff3285f3e93&with_genres=${genreId}&language=pt-BR`;
             setfilmURL(genreURL);
-            setSelectedCategory("GÊNERO: " + filmGenre); // Atualiza o estado com o nome da categoria selecionada
+            setSelectedCategory("GÊNERO: " + filmGenre);
         }
     };
 
@@ -104,6 +105,7 @@ const Screen = () => {
             }
             const data = await response.json();
             setfilmData(data.results);
+            setSelectedCategory("FILMES COM: \"" + filmSearch + "\"");
             setfilmSearch("");
         } catch (error) {
             console.error('Erro:', error);
@@ -127,7 +129,7 @@ const Screen = () => {
                         disableElevation
                         variant="contained"
                         aria-label="Disabled button group">
-                        <Button>REGISTRAR</Button>
+                        <Button href="https://codepen.io/htmlecsspro/pen/eVvRbm">REGISTRAR</Button>
                         <Button>ENTRAR</Button>
                     </ButtonGroup>
                 </div>
@@ -152,6 +154,7 @@ const Screen = () => {
                                 type="text"
                                 className='imputText'
                                 id="demo-helper-text-misaligned-no-helper"
+                                autoComplete="off"
                                 label="Buscar Filme"
                                 onChange={(e) => {
                                     setfilmSearch(e.target.value)

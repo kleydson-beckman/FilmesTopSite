@@ -129,7 +129,7 @@ const Screen = () => {
                         disableElevation
                         variant="contained"
                         aria-label="Disabled button group">
-                        <Button href="https://codepen.io/htmlecsspro/pen/eVvRbm">REGISTRAR</Button>
+                        <Button>REGISTRAR</Button>
                         <Button>ENTRAR</Button>
                     </ButtonGroup>
                 </div>

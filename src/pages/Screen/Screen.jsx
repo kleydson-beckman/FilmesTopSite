@@ -26,6 +26,7 @@ const filmsSLIDE = import.meta.env.VITE_SLIDE;
 let url = filmsURL + "?" + apiKey + "&language=pt-BR";
 
 const Screen = () => {
+    
     const [filmData, setfilmData] = useState([]);
     const [filmURL, setfilmURL] = useState(url);
     const [filmSearch, setfilmSearch] = useState("");

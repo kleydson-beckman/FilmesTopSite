@@ -38,6 +38,11 @@ function Infos() {
         fetchFilme();
     }, [id]);
 
+    if (!filme) {
+        return 
+        <div>Carregando...</div>;
+    }
+
     return (
         <div className="infos-bloco" style={{ backgroundImage: `url(${filmsSLIDE}${filme.backdrop_path})` }}>
             <div className="infos-btn-back">

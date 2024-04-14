@@ -1,25 +1,40 @@
 <p align="center">
-  <img src="/src/assets/logo.png" alt="">
+  <img src="/src/assets/logo.png" alt="" width="50%">
 </p>
-
-<!-- # FilmesTop.com é um site que para você, que é cinéfilo e quer encontrar informações sobre filmes a "um passo" de você. -->
-
-<p>FilmesTop.com é um site que para você, que é cinéfilo e quer encontrar informações sobre filmes a "um passo" de você.</p>
 <br/>
 <br/>
-<p>Quer saber quais são os filmes mais populares do momento?</p>
+
+# FilmesTop.com é um site que para você, que é cinéfilo e quer encontrar informações sobre filmes a "um passo" de você.
+
+<br/>
+<br/>
+
+# Quer saber quais são os filmes mais populares do momento?
+
 <p align="center" width="50%">
   <img src="/src/assets/readme/readme_1.png" alt="">
 </p>
-<p>Que tal explorar filmes por categorias?</p>
+<br/>
+<br/>
+
+# Que tal explorar filmes por categorias?
+
 <p align="center" width="50%">
   <img src="/src/assets/readme/readme_2.png" alt="">
 </p>
-<p>E se você quer pesquisar apenas aquele filme especifico? Claro que pode.</p>
+<br/>
+<br/>
+
+# E se você quer pesquisar apenas aquele filme especifico? Claro que pode.
+
 <p align="center" width="50%">
   <img src="/src/assets/readme/readme_3.png" alt="">
 </p>
-<p>Saiba informações sobre seu filme favorito com apenas um clique e ainda assistir o trailer, olha que fácil.</p>
+<br/>
+<br/>
+
+# Saiba informações sobre seu filme favorito com apenas um clique e ainda assistir o trailer, olha que fácil.
+
 <p align="center" width="50%">
   <img src="/src/assets/readme/readme_4.png" alt="">
 </p>
@@ -27,6 +42,8 @@
   <img src="/src/assets/readme/readme_5.png" alt="">
 </p>
 <br/>
-<p>Não perca tempo e venha conhecer mais do universo dos filmes.
+<br/>
+
+# Não perca tempo e venha conhecer mais do universo dos filmes.
 <br/>
 Code by Kleydson Beckman</p>

@@ -1,10 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
+import ReplyIcon from '@mui/icons-material/Reply';
+import { Button } from "@mui/material";
 import CardTrailer from "../../components/CardTrailer/CardTrailer.jsx";
 
 const apiKey = import.meta.env.VITE_API_KEY;
 const filmsDetails = import.meta.env.VITE_DET;
 const filmsIMG = import.meta.env.VITE_IMG;
+const filmsSLIDE = import.meta.env.VITE_SLIDE;
+
+import './style.css'
+
+import img1 from "../../assets/noimage.png"
+
 
 function Infos() {
     const { id } = useParams();
@@ -13,7 +21,7 @@ function Infos() {
     useEffect(() => {
         const fetchFilme = async () => {
             try {
-                const response = await fetch(`${filmsDetails}/${id}?api_key=${apiKey}&language=pt-BR`);
+                const response = await fetch(`${filmsDetails}/${id}?${apiKey}&language=pt-BR`);
                 if (!response.ok) {
                     throw new Error('Erro ao buscar detalhes do filme');
                 }
@@ -32,16 +40,32 @@ function Infos() {
     }
 
     return (
-        <div>
-            <h1>Informações do Filme</h1>
-            <img src={`${filmsIMG}${filme.poster_path}`} alt={filme.title} />
-            <h2>{filme.title}</h2>
-            <p>Sinopse: {filme.overview}</p>
-            <p>Data de Lançamento: {filme.release_date}</p>
-            <CardTrailer/>
-            <Link to="/">
-                <button>Go Back</button>
-            </Link>
+        <div className="infos-bloco" style={{ backgroundImage: `url(${filmsSLIDE}${filme.backdrop_path})` }}>
+            <div className="infos-btn-back">
+                <Link to="/">
+                    <Button><ReplyIcon /></Button>
+                </Link>
+            </div>
+            <div className="infos-infor">
+                <h1>Informações do Filme</h1>
+                <div class="row">
+                    <div class="col-md-8" id="infos-div-1">
+                        <img className="infos-div-img" src={filme.poster_path ? `${filmsIMG}${filme.poster_path}` : img1} alt={filme.title} />
+                    </div>
+                    <div class="col-md-4" id="infos-div-2">
+                        <h2>{filme.title}</h2>
+                        <br />
+                        <div className="infos-text-box">
+                            <p><b>Sinopse: </b>
+                                {filme.overview ? filme.overview : "Infelizmente não há uma sinopse disponível para este filme."}
+                            </p>
+                        </div>
+                        <br />
+                        <p><b>Data de Lançamento:</b> {filme.release_date}</p>
+                    </div>
+                </div>
+            </div>
+            <CardTrailer />
         </div>
     );
 }

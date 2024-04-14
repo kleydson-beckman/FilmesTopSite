@@ -9,10 +9,38 @@
     font-family: "Poppins", sans-serif;
 }
 
+a {
+    color: #fff;
+}
+
 body {
     background-color: #000;
     color: #fff;
     overflow-y: auto;
+    overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+    width: 5px; 
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: transparent;
+    border-radius: 5px; 
+
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: transparent;
+}
+
+
+:root {
+    --primary-color: #fff;
+    --secondary-color: #fff;
+    --terciary-color: #fff;
+    --quaternary-color: #fff;
+    --quinary-color: #fff;
 }
 
 

@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 
 const apiKey = import.meta.env.VITE_API_KEY;
 
+import './style.css';
 
 function CardTrailer() {
     const { id } = useParams();
@@ -11,7 +12,7 @@ function CardTrailer() {
     useEffect(() => {
         const fetchVideos = async () => {
             try {
-                const response = await fetch(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=${apiKey}`);
+                const response = await fetch(`https://api.themoviedb.org/3/movie/${id}/videos?${apiKey}`);
                 
                 if (!response.ok) {
                     throw new Error('Erro ao buscar vídeos do filme');
@@ -49,14 +50,14 @@ function CardTrailer() {
     }
 
     return (
-        <div>
-            <h1>Trailers do Filme</h1>
-            <div>
+        <div className="card-trailer-box">
+            <h1>Trailer do Filme</h1>
+            <div className="card-trailer">
                 {videos.map(video => (
                     <div key={video.id}>
                         <iframe
-                            width="560"
-                            height="315"
+                            width="880"
+                            height="470"
                             src={`https://www.youtube.com/embed/${video.key}?vq=1080p`}
                             title={video.name}
                             frameBorder="0"

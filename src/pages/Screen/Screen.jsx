@@ -18,12 +18,12 @@ import img2 from "../../assets/noimage.png"
 
 import './style.css';
 
-const apiKey = import.meta.env.VITE_API_KEY;
-const filmsURL = import.meta.env.VITE_API_FILMS;
-const filmsSearch = import.meta.env.VITE_SEARCH;
-const filmsSLIDE = import.meta.env.VITE_SLIDE;
+// const apiKey = import.meta.env.VITE_API_KEY;
+// const filmsURL = import.meta.env.VITE_API_FILMS;
+// const filmsSearch = import.meta.env.VITE_SEARCH;
+// const filmsSLIDE = import.meta.env.VITE_SLIDE;
 
-let url = filmsURL + "?" + "api_key=64de36c360b3b3769a76bff3285f3e93" + "&language=pt-BR";
+let url = "https://api.themoviedb.org/3/movie/now_playing?api_key=64de36c360b3b3769a76bff3285f3e93&language=pt-BR";
 
 const Screen = () => {
     
@@ -97,7 +97,7 @@ const Screen = () => {
             return;
         }
         try {
-            const newFilmURL = `${filmsSearch}?api_key=64de36c360b3b3769a76bff3285f3e93&query=${filmSearch}&language=pt-BR`;
+            const newFilmURL = `https://api.themoviedb.org/3/search/movie?api_key=64de36c360b3b3769a76bff3285f3e93&query=${filmSearch}&language=pt-BR`;
             const response = await fetch(newFilmURL);
             if (!response.ok) {
                 throw new Error('Erro ao buscar filmes');
@@ -177,7 +177,7 @@ const Screen = () => {
                 {highlightedFilm && (
                     <div className="header-slider-poster">
                         <h1 className="header-slider-title">{highlightedFilm.title}</h1>
-                        <img src={highlightedFilm.backdrop_path ? `${filmsSLIDE}${highlightedFilm.backdrop_path}` : img2} alt="" />
+                        <img src={highlightedFilm.backdrop_path ? `https://image.tmdb.org/t/p/original/${highlightedFilm.backdrop_path}` : img2} alt="" />
                     </div>
                 )}
             </div>

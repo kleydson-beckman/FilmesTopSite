@@ -11,10 +11,10 @@ import img1 from "../../assets/noimage.png"
 
 import './style.css'
 
-const apiKey = import.meta.env.VITE_API_KEY;
-const filmsDetails = import.meta.env.VITE_DET;
-const filmsIMG = import.meta.env.VITE_IMG;
-const filmsSLIDE = import.meta.env.VITE_SLIDE;
+// const apiKey = import.meta.env.VITE_API_KEY;
+// const filmsDetails = import.meta.env.VITE_DET;
+// const filmsIMG = import.meta.env.VITE_IMG;
+// const filmsSLIDE = import.meta.env.VITE_SLIDE;
 
 // função para coletar os detalhes dos filmes
 function Infos() {
@@ -24,7 +24,7 @@ function Infos() {
     useEffect(() => {
         const fetchFilme = async () => {
             try {
-                const response = await fetch(`${filmsDetails}/${id}?api_key=64de36c360b3b3769a76bff3285f3e93&language=pt-BR`);
+                const response = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=64de36c360b3b3769a76bff3285f3e93&language=pt-BR`);
                 if (!response.ok) {
                     throw new Error('Erro ao buscar detalhes do filme');
                 }
@@ -44,7 +44,7 @@ function Infos() {
     }
 
     return (
-        <div className="infos-bloco" style={{ backgroundImage: `url(${filmsSLIDE}${filme.backdrop_path})` }}>
+        <div className="infos-bloco" style={{ backgroundImage: `url(https://image.tmdb.org/t/p/original/${filme.backdrop_path})` }}>
             <div className="infos-btn-back">
                 <Link to="/">
                     <Button><ReplyIcon /></Button>
@@ -54,7 +54,7 @@ function Infos() {
                 <h1>Informações do Filme</h1>
                 <div class="row">
                     <div class="col-md-8" id="infos-div-1">
-                        <img className="infos-div-img" src={filme.poster_path ? `${filmsIMG}${filme.poster_path}` : img1} alt={filme.title} />
+                        <img className="infos-div-img" src={filme.poster_path ? `https://image.tmdb.org/t/p/w500/${filme.poster_path}` : img1} alt={filme.title} />
                     </div>
                     <div class="col-md-4" id="infos-div-2">
                         <h2>{filme.title}</h2>

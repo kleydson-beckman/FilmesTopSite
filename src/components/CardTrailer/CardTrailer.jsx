@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 import './style.css';
 
-const apiKey = import.meta.env.VITE_API_KEY;
+// const apiKey = import.meta.env.VITE_API_KEY;
 
 function CardTrailer() {
     const { id } = useParams();

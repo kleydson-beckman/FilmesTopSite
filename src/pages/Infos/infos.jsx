@@ -8,18 +8,14 @@ import ReplyIcon from '@mui/icons-material/Reply';
 import CardTrailer from "../../components/CardTrailer/CardTrailer.jsx";
 
 import img1 from "../../assets/noimage.png"
+import img2 from "../../assets/load.gif"
 
 import './style.css'
 
-// const apiKey = import.meta.env.VITE_API_KEY;
-// const filmsDetails = import.meta.env.VITE_DET;
-// const filmsIMG = import.meta.env.VITE_IMG;
-// const filmsSLIDE = import.meta.env.VITE_SLIDE;
-
-// função para coletar os detalhes dos filmes
 function Infos() {
     const { id } = useParams();
     const [filme, setFilme] = useState(null);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         const fetchFilme = async () => {
@@ -32,15 +28,23 @@ function Infos() {
                 setFilme(data);
             } catch (error) {
                 console.error('Erro:', error);
+            } finally {
+                setIsLoading(true);
             }
         };
 
         fetchFilme();
     }, [id]);
 
-    if (!filme) {
-        return 
-        <div>Carregando...</div>;
+    useEffect(() => {
+        const timeout = setTimeout(() => {
+            setIsLoading(false);
+        }, 2000);
+        return () => clearTimeout(timeout);
+    }, []);
+
+    if (isLoading) {
+        return <div className="load"><img src={img2} alt="Carregando..." />Carregando...</div>;
     }
 
     return (

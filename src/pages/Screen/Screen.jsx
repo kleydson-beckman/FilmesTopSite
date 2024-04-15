@@ -26,7 +26,7 @@ import './style.css';
 let url = "https://api.themoviedb.org/3/movie/now_playing?api_key=64de36c360b3b3769a76bff3285f3e93&language=pt-BR";
 
 const Screen = () => {
-    
+
     const [filmData, setfilmData] = useState([]);
     const [filmURL, setfilmURL] = useState(url);
     const [filmSearch, setfilmSearch] = useState("");
@@ -98,19 +98,35 @@ const Screen = () => {
             return;
         }
         try {
-            const newFilmURL = `https://api.themoviedb.org/3/search/movie?api_key=64de36c360b3b3769a76bff3285f3e93&query=${filmSearch}&language=pt-BR`;
-            const response = await fetch(newFilmURL);
-            if (!response.ok) {
-                throw new Error('Erro ao buscar filmes');
+            let allResults = [];
+            let page = 1;
+            let totalPages = 1; // Começa com 1 para garantir que o loop seja executado pelo menos uma vez
+
+            // Loop até todas as páginas serem buscadas
+            while (page <= totalPages) {
+                const newFilmURL = `https://api.themoviedb.org/3/search/movie?api_key=64de36c360b3b3769a76bff3285f3e93&query=${filmSearch}&language=pt-BR&page=${page}`;
+                const response = await fetch(newFilmURL);
+                if (!response.ok) {
+                    throw new Error('Erro ao buscar filmes');
+                }
+                const data = await response.json();
+
+                // Filtra os resultados para incluir apenas os filmes cujo título contenha a palavra-chave
+                const filteredResults = data.results.filter(film => film.title.toLowerCase().includes(filmSearch.toLowerCase()));
+
+                allResults = [...allResults, ...filteredResults];
+                totalPages = data.total_pages;
+                page++;
             }
-            const data = await response.json();
-            setfilmData(data.results);
+
+            setfilmData(allResults);
             setSelectedCategory("FILMES COM: \"" + filmSearch + "\"");
             setfilmSearch("");
         } catch (error) {
             console.error('Erro:', error);
         }
     }
+
 
     // Função para controlar a abertura e fechamento do menu de categorias
     const toggleDrawer = (open) => (event) => {

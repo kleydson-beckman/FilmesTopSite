@@ -1,3 +1,23 @@
+/* ESTILO DO LOADING */
+.load {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    font-size: 4rem;
+    color: var(--primary-color);
+    text-shadow: 10px 10px 10px rgba(153, 153, 153, 0.233);
+    backdrop-filter: blur(5px);
+}
+
+.load img {
+    width: 8%;
+}
+
+
 /* ESTILOS DO CONJUTO 1 */
 
 .infos-bloco h1 {
@@ -167,6 +187,32 @@ p {
 /* RESPONSIVIDADE */
 
 @media screen and (max-width: 100vh) {
+    .load {
+        font-size: 2rem;
+    }
+    
+    .load img {
+        width: 30%;
+    }
+
+    .infos-bloco {
+        padding: 25px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 10vh;
+        background-size: 800px;
+        background-repeat: no-repeat;
+        overflow-x: hidden;
+        background-position: top;
+        overflow-x: hidden;
+    }
+    .infos-bloco::before {
+        height: 450px;
+        background: linear-gradient(to top, rgba(0, 0, 0, 1) 0%, rgba(48, 47, 47, 0.705) 100%);
+    }
+
     .infos-bloco h1 {
         font-size: 2.2rem;
     }
@@ -178,9 +224,11 @@ p {
     .infos-div-img {
         width: 300px;
     }
+
     .infos-infor {
         width: 500px;
     }
+
     #infos-div-2 {
         margin-top: -2vh;
         border-top-right-radius: 0px;
@@ -189,9 +237,11 @@ p {
         width: auto;
         z-index: -1;
     }
+
     .card-trailer {
         padding: 10px;
     }
+
     iframe {
         width: 320px;
         height: 200px;

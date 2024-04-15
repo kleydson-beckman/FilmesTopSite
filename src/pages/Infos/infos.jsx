@@ -69,7 +69,7 @@ function Infos() {
                             </p>
                         </div>
                         <br />
-                        <p><b>Data de Lançamento:</b> {filme.release_date}</p>
+                        <p id="date"><b>Data de Lançamento:</b> {filme.release_date}</p>
                     </div>
                 </div>
             </div>

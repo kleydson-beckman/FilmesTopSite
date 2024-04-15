@@ -133,6 +133,10 @@ p {
     padding: 45px;
 }
 
+#date {
+    color:  rgba(255, 255, 255, 0.315);
+}
+
 .infos-text-box {
     display: flex;
     width: auto;
